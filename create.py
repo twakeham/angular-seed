@@ -1,6 +1,8 @@
 import os
 import sys
 import json
+import shutil
+
 
 cwd = os.getcwd()
 
@@ -60,8 +62,12 @@ def create_module(name: str) -> None:
         module.write(module_tmpl.format(name))
 
     template_folder = input('Create template folder? (y/n)')
-    if template_folder == 'y':
+    if template_folder.lower() == 'y':
         os.mkdir(os.path.join(mod_path, 'templates'))
+
+    routes = input('Create routes? (y/n)')
+    if routes.lower() == 'y':
+        shutil.copyfile(os.path.join(cwd, 'templates', 'routes.tmpl'), os.path.join(mod_path, 'module.routes.js'))
 
     _save_module_config(name, {'module': name})
 
@@ -72,6 +78,9 @@ def _generate_requirements(name: str) -> None:
     module_config.pop('module')
 
     files = ['\'./module.js\'']
+
+    if os.path.exists(os.path.join(mod_path, 'routes.js')):
+        files.append('\'./module.routes.js\'')
 
     for component_type, components in module_config.items():
         for component in components:
