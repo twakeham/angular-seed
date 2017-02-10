@@ -79,7 +79,7 @@ def _generate_requirements(name: str) -> None:
 
     files = ['\'./module.js\'']
 
-    if os.path.exists(os.path.join(mod_path, 'routes.js')):
+    if os.path.exists(os.path.join(mod_path, 'module.routes.js')):
         files.append('\'./module.routes.js\'')
 
     for component_type, components in module_config.items():
