@@ -2,7 +2,7 @@
   "name": "angular-seed",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS", ,
+  "description": "A starter project for AngularJS",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
